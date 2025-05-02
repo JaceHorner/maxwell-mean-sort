@@ -98,7 +98,7 @@ This hybrid approach is both space-efficient and practical for large-scale use.
 gcc -shared -o maxwell_mean.dll -O2 -fPIC maxwell_mean.c
 
 python benchmark_3way.py
-'''
+```
 
 > _This project was developed and refined by Jace Maxwell Horner with assistance from AI tools (ChatGPT), used to support debugging, optimization, and documentation._
 
