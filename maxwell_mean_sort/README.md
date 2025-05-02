@@ -80,6 +80,29 @@ This hybrid approach is both space-efficient and practical for large-scale use.
 
 ---
 
+Original array:
+[81, 14, 3, 94, 35, 31, 28, 17, 94, 13, 86, 94, 69, 11, 75]
+
+Step 1: Partition entire array around mean (pivot = 49.67)
+→ [11, 14, 3, 13, 35, 31, 28, 17, 94, 94, 86, 94, 69, 81, 75]
+
+Step 2: Partition left segment [11, 14, 3, 13, 35, 31, 28, 17] around mean (pivot = 19.00)
+→ [11, 14, 3, 13, 17, 31, 28, 35]
+
+  ▸ Insertion sort (0–4): [3, 11, 13, 14, 17]  
+  ▸ Insertion sort (5–7): [28, 31, 35]
+
+Step 3: Partition right segment [94, 94, 86, 94, 69, 81, 75] around mean (pivot = 84.71)
+→ [75, 81, 69, 94, 86, 94, 94]
+
+  ▸ Insertion sort (8–10): [69, 75, 81]  
+  ▸ Insertion sort (11–14): [86, 94, 94, 94]
+
+Final sorted array:
+[3, 11, 13, 14, 17, 28, 31, 35, 69, 75, 81, 86, 94, 94, 94]
+
+---
+
 ## 📁 Files Included
 
 - `maxwell_mean.c` — C source code  
@@ -101,4 +124,3 @@ python benchmark_3way.py
 ```
 
 > _This project was developed and refined by Jace Maxwell Horner with assistance from AI tools (ChatGPT), used to support debugging, optimization, and documentation._
-
