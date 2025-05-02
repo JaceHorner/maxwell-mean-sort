@@ -99,4 +99,5 @@ gcc -shared -o maxwell_mean.dll -O2 -fPIC maxwell_mean.c
 
 python benchmark_3way.py
 
-This project was developed and refined by Jace Maxwell Horner with assistance from AI tools (ChatGPT), used to support debugging, optimization, and documentation.
+> _This project was developed and refined by Jace Maxwell Horner with assistance from AI tools (ChatGPT), used to support debugging, optimization, and documentation._
+
