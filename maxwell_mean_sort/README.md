@@ -6,14 +6,14 @@
 
 ## 🔧 Features
 
-- 🚀 Written in C for maximum speed
-- 💾 In-place sort with low memory overhead
-- 📊 Mean-based adaptive pivoting
-- 🧱 Manual stack (no recursion)
-- 🔁 Insertion sort fallback for small segments
-- 🧪 Verified correct across hundreds of runs
-- 🐍 Python wrapper via `ctypes`
-- ⚖️ Open source under MIT License
+- 🚀 Written in C for maximum speed  
+- 💾 In-place sort with low memory overhead  
+- 📊 Mean-based adaptive pivoting  
+- 🧱 Manual stack (no recursion)  
+- 🔁 Insertion sort fallback for small segments  
+- 🧪 Verified correct across hundreds of runs  
+- 🐍 Python wrapper via `ctypes`  
+- ⚖️ Open source under MIT License  
 
 ---
 
@@ -23,7 +23,7 @@
 **Apps running**: Discord, League of Legends: TFT, miscellaneous background programs  
 **Environment**: Python 3.11 + 64-bit DLL  
 **Benchmark script**: `benchmark_3way.py`  
-**Runs per size**: 25 (with hundreds more done manually)
+**Runs per size**: 25 (with hundreds more run manually)
 
 | Array Size     | TimSort (avg) | Maxwell Mean (C) (avg) | Quicksort (Py) (avg) |
 |----------------|---------------|--------------------------|------------------------|
@@ -46,18 +46,47 @@
 | Quicksort (Py)   | O(n log n) | O(n log n)    | O(n²)       | O(log n)         |
 
 > Maxwell Mean achieves **O(n)** best-case performance on sorted or nearly sorted arrays, with efficient manual stack partitioning.  
-> Its **average performance** is solidly **O(n log n)**, and it handles large arrays with minimal memory thanks to its in-place design.  
-> Worst-case O(n²) is only encountered in extreme pivot imbalance scenarios.
+> Its **average-case** performance is solidly **O(n log n)**, while it avoids recursion depth issues by using an explicit stack.  
+> **Worst-case O(n²)** behavior may occur in highly skewed distributions, but is rare in practice.
+
+---
+
+## ⚙️ How It Works
+
+**Maxwell Mean Sort** combines classic partitioning with adaptive strategies for real-world performance. Here's the step-by-step behavior:
+
+1. **Manual Stack Initialization**  
+   - Avoids recursion by using a custom stack for managing subarray ranges. Starts with the full array.
+
+2. **Loop Until Sorted**  
+   - Continues processing while the stack has unsorted ranges.
+
+3. **Use Insertion Sort for Small Segments**  
+   - For ranges with ≤50 elements, insertion sort is applied (faster for tiny partitions).
+
+4. **Compute the Mean**  
+   - The pivot is the arithmetic mean of all values in the current segment.
+
+5. **Partition Around Mean**  
+   - All elements ≤ mean go to the left, > mean go to the right (in-place partitioning).
+
+6. **Push Subranges Back on Stack**  
+   - After partitioning, left and right subsegments are pushed to be sorted in future iterations.
+
+7. **Repeat**  
+   - The process continues until all segments are sorted.
+
+This hybrid approach is both space-efficient and practical for large-scale use.
 
 ---
 
 ## 📁 Files Included
 
-- `maxwell_mean.c` — C source code
-- `maxwell_mean.dll` — Compiled DLL (64-bit Windows)
-- `benchmark_3way.py` — Benchmark script for 3-way comparison
-- `README.md` — This file
-- `LICENSE` — MIT License
+- `maxwell_mean.c` — C source code  
+- `maxwell_mean.dll` — Compiled DLL (64-bit Windows)  
+- `benchmark_3way.py` — Benchmark script for 3-way comparison  
+- `README.md` — This file  
+- `LICENSE` — MIT License  
 
 ---
 
@@ -67,4 +96,5 @@
 
 ```bash
 gcc -shared -o maxwell_mean.dll -O2 -fPIC maxwell_mean.c
+
 python benchmark_3way.py
