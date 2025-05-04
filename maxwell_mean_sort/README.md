@@ -107,7 +107,8 @@ Final sorted array:
 
 - `maxwell_mean.c` — C source code  
 - `maxwell_mean.dll` — Compiled DLL (64-bit Windows)  
-- `benchmark_3way.py` — Benchmark script for 3-way comparison  
+- `benchmark_3way.py` — Benchmark script for 3-way comparison
+- `test_maxwell_vs_sort.py` - Simple test against .sort
 - `README.md` — This file  
 - `LICENSE` — MIT License  
 
