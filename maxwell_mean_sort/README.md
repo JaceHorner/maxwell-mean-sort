@@ -35,6 +35,23 @@
 
 ✅ All outputs verified for correctness on every run.
 
+Tested on arrays of 1,000,000 random integers across 25 runs, 100k Elements.
+
+| **Algorithm**          | **Avg Time (s)** | **Relative Speed**                         |
+|------------------------|------------------|---------------------------------------------|
+| **Maxwell Mean (C)**   | **0.0075**        | ████████████████████████████████████████ (100%) |
+| TimSort (Py)           | 0.011726          | █████████████████████████ (≈64%)            |
+| RadixSort (Py)         | 0.059518          | █████ (≈13%)                                 |
+| CountingSort (Py)      | 0.116631          | ██ (≈6%)                                     |
+| BucketSort (Py)        | 0.151322          | █ (≈5%)                                      |
+| Quicksort (Py)         | 0.152949          | █ (≈5%)                                      |
+| MergeSort (Py)         | 0.204943          | █ (≈4%)                                      |
+| ShellSort (Py)         | 0.308924          | (≈2.4%)                                      |
+| HeapSort (Py)          | 0.325641          | (≈2.3%)                                      |
+| InsertionSort (Py)     | ∞                 | ✖                                            |
+| BubbleSort (Py)        | ∞                 | ✖                                            |
+| SelectionSort (Py)     | ∞                 | ✖                                            |
+
 ---
 
 ## 📊 Complexity Comparison
